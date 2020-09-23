@@ -13,7 +13,7 @@ export default function About() {
         </p>
         <p>
           So I decided go full blown ironic and write whatever comes to my mind
-          without it needing to be useful to you
+          without it needing to be useful to you.
         </p>
       </section>
       <section className="space-y-3">
@@ -37,8 +37,7 @@ export default function About() {
         <h2 className="text-2xl font-semibold">I love solving problems</h2>
         <p>
           I'm obsessed with thinking deeply about problems. I get a very
-          tangible euphoria from thinking deeply about a problem and solving
-          them.
+          tangible euphoria from thinking deeply about a problem and solving it.
         </p>
         <p>
           This obsession has made me very good at looking at things logically
@@ -50,16 +49,16 @@ export default function About() {
         <h2 className="text-2xl font-semibold">I enjoy Self Reflection</h2>
         <p>
           I'm very much into stoicism. And more importantly I love to reflect on
-          Akash. It allows me to think clearly, improve myself, detect my own
-          bullshits.
+          Akash. It allows me to think clearly, improve myself, and detect my
+          own bullshits.
         </p>
         <p>
-          I make observations about me and those observations are a data about
-          me and how I work. And then I utilize it to construct a strategy about
-          how to deal with those truths.
+          I make observations about me, use that as a data about me and how I
+          work, and then utilize it to construct a strategy about how to deal
+          with those truths.
         </p>
         <p>
-          It's a like debugging, however I'm the detective, victim and the
+          It's like debugging, however I'm the detective, victim and the
           murderer!
         </p>
       </section>
@@ -99,12 +98,12 @@ export default function About() {
           is unbearable is what I think is going to happen in five hours or in
           five days. This ability to see into the future is a double edged
           sword. So I try not to be anxious about tomorrow, tomorrow will look
-          after itself.
+          after itself!
         </p>
         <p>
-          More importantly, If I respond to “what ifs” I'll get in trouble. So,
-          I need to wait some time, let it settle, and then listen very
-          carefully to myself.
+          More importantly, If I respond to “what ifs” I'll get in trouble. So I
+          need to wait some time, let it settle, and then listen very carefully
+          to myself.
         </p>
       </section>
 
@@ -112,9 +111,9 @@ export default function About() {
         <h2 className="text-2xl font-semibold">I love startups</h2>
         <p>
           Startups represent a weird mix of all things I love in life. Be it
-          solving complex problems, dealing with lots of things at once, people,
-          finances, systems, etc and hosts of all sorts of wacky things. I love
-          it!
+          solving complex problems or dealing with lots of things at once,
+          people, finances, systems, etc and a bag of all sorts of wacky things.
+          I love it!
         </p>
         <p>
           And you don’t start companies to get rich. You start them for reasons
@@ -138,7 +137,7 @@ export default function About() {
         <h2 className="text-2xl font-semibold">I like to do what I love</h2>
         <ul>
           <li>The money may follow and please me.</li>
-          <li>The money may follow but pleases me less that I expected.</li>
+          <li>The money may follow but pleases me less than I expected.</li>
           <li>The money may follow but pleases me briefly.</li>
           <li>The money might not follow, which might disappoint me.</li>
           <li>
@@ -153,10 +152,10 @@ export default function About() {
           I'm learning to embrace failure
         </h2>
         <p>
-          Growing up, I had always been told I'm a smart kid. So I'd developed
-          this identity that I’m a smart kid. And I would do things that would
-          reinforce that identity, and stay away from things that would contrast
-          that identity.
+          Growing up, I had always been told that I'm a smart kid. So I'd
+          developed this identity that I’m a smart kid. And I would do things
+          that would reinforce that identity, and stay away from things that
+          would contrast that identity.
         </p>
         <p>
           It made it really hard for me to do anything where other people could
@@ -167,9 +166,9 @@ export default function About() {
         </p>
         <p>
           Eventually, I learned that the world actually rewards experience and
-          competence. So, I am learning to reframe my thinking from smart/stupid
-          to experienced / inexperienced. And the More I can realise that my
-          success has nothing to do with intelligence, rather with the
+          competence. So, I am learning to reframe my thinking from smart /
+          stupid to experienced / inexperienced. And the More I can realise that
+          my success has nothing to do with intelligence, rather with the
           experience / inexperience and the degree of competence I have, the
           better off I’m going to be. The more I realise that, the more
           naturally I’d want to try things and be okay failing at those things.
