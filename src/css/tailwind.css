@@ -2,6 +2,17 @@
   --color-primary: #3ef4e8;
   --color-secondary: #081d6a;
 }
+
+::-moz-selection {
+  color: var(--color-primary);
+  background: var(--color-secondary);
+}
+
+::selection {
+  color: var(--color-primary);
+  background: var(--color-secondary);
+}
+
 /* purgecss start ignore */
 @tailwind base;
 /* purgecss end ignore */
