@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/tailwind.css";
 import Head from "next/head";
-import type { AppProps } from "next/app";
+import { AppProps } from "next/app";
 import SectionContainer from "../components/SectionContainer";
 import Footer from "../components/Footer";
 
