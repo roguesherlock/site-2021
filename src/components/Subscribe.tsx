@@ -3,7 +3,7 @@ import React from "react";
 export default function Subscribe() {
   return (
     <div>
-      <h1 className="text-lg font-medium px-2 sm:px-0">
+      <h1 className="text-lg text-center font-medium px-2 sm:px-0">
         Get notified when I launch something new & note-worthy
       </h1>
       <form
