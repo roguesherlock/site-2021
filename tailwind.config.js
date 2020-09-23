@@ -20,6 +20,8 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      display: ['peachykeen', 'Inter var', ...defaultTheme.fontFamily.sans],
+      code: ['codesaver', ...defaultTheme.fontFamily.mono]
     },
     rotate: {
       "-180": "-180deg",
@@ -96,9 +98,47 @@ module.exports = {
       132: "34rem",
       140: "36rem",
     },
+    extend: {
+      colors: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        'deep-sapphire': '#081d6a',
+        'bright-turquoise': '#3ef4e8'
+      },
+      animation: {
+        'blink': 'blink 1s step-end infinite'
+      },
+      keyframes: {
+        'blink': {
+          '0%': { opacity: '0' },
+          '50%': { opacity: '0.5' }
+        }
+      }
+    }
   },
   plugins: [function ({ addBase }) {
     addBase([
+      {
+        '@font-face': {
+          fontFamily: 'codesaver',
+          fontWeight: '400',
+          fontStyle: 'normal',
+          fontNamedInstance: 'Regular',
+          fontDisplay: 'swap',
+          src: 'url("/fonts/CodeSaver-Regular.otf") format("opentype")',
+
+        },
+      },
+      {
+        '@font-face': {
+          fontFamily: 'peachykeen',
+          fontWeight: '400',
+          fontStyle: 'normal',
+          fontNamedInstance: 'Regular',
+          fontDisplay: 'swap',
+          src: 'url("/fonts/PeachyKeen.otf") format("opentype")',
+        },
+      },
       {
         '@font-face': {
           fontFamily: 'Inter var',

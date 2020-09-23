@@ -1,3 +1,7 @@
+:root {
+  --color-primary: #3ef4e8;
+  --color-secondary: #081d6a;
+}
 /* purgecss start ignore */
 @tailwind base;
 /* purgecss end ignore */
