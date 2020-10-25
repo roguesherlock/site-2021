@@ -1,15 +1,35 @@
 // tailwind.config.js
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
+const mdx = require("@mdx-js/mdx");
+
+const typographyConfig = require("./tailwind.typography.config");
+const typography = typographyConfig.typography;
 
 module.exports = {
-  // purge unused css
-  purge: [
-    './src/**/*.html',
-    './src/**/*.vue',
-    './src/**/*.jsx',
-    './src/**/*.js',
-    './src/**/*.tsx'
-  ],
+  purge: {
+    mode: "all",
+    content: ["./src/**/*.{ts,tsx,mdx}", "./next.config.js"],
+    options: {
+      extractors: [
+        {
+          extensions: ["mdx"],
+          extractor: (content) => {
+            content = mdx.sync(content);
+
+            // Capture as liberally as possible, including things like `h-(screen-1.5)`
+            const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
+
+            // Capture classes within other delimiters like .block(class="w-1/2") in Pug
+            const innerMatches =
+              content.match(/[^<>"'`\s.(){}[\]#=%]*[^<>"'`\s.(){}[\]#=%:]/g) ||
+              [];
+
+            return broadMatches.concat(innerMatches);
+          },
+        },
+      ],
+    },
+  },
   important: true,
   theme: {
     colors: {
@@ -17,11 +37,15 @@ module.exports = {
       // but there's always a
       // place for hot pink
       "hot-pink": "#fd2d78",
+      primary: "var(--color-primary)",
+      secondary: "var(--color-secondary)",
+      "deep-sapphire": "#081d6a",
+      "bright-turquoise": "#3ef4e8",
     },
     fontFamily: {
-      sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      display: ['peachykeen', 'Inter var', ...defaultTheme.fontFamily.sans],
-      code: ['codesaver', ...defaultTheme.fontFamily.mono]
+      sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+      display: ["peachykeen", "Inter var", ...defaultTheme.fontFamily.sans],
+      code: ["codesaver", ...defaultTheme.fontFamily.mono],
     },
     rotate: {
       "-180": "-180deg",
@@ -100,65 +124,80 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        'deep-sapphire': '#081d6a',
-        'bright-turquoise': '#3ef4e8'
+        code: {
+          green: "#b5f4a5",
+          yellow: "#ffe484",
+          purple: "#d9a9ff",
+          red: "#ff8383",
+          blue: "#93ddfd",
+          white: "#fff",
+        },
       },
       animation: {
-        'blink': 'blink 1s step-end infinite'
+        blink: "blink 1s step-end infinite",
       },
       keyframes: {
-        'blink': {
-          '0%': { opacity: '0' },
-          '50%': { opacity: '0.5' }
-        }
-      }
-    }
+        blink: {
+          "0%": { opacity: "0" },
+          "50%": { opacity: "0.5" },
+        },
+      },
+    },
+    typography,
   },
-  plugins: [function ({ addBase }) {
-    addBase([
-      {
-        '@font-face': {
-          fontFamily: 'codesaver',
-          fontWeight: '400',
-          fontStyle: 'normal',
-          fontNamedInstance: 'Regular',
-          fontDisplay: 'swap',
-          src: 'url("/fonts/CodeSaver-Regular.otf") format("opentype")',
-
+  future: { removeDeprecatedGapUtilities: true },
+  plugins: [
+    function ({ addBase }) {
+      addBase([
+        {
+          "@font-face": {
+            fontFamily: "codesaver",
+            fontWeight: "400",
+            fontStyle: "normal",
+            fontNamedInstance: "Regular",
+            fontDisplay: "swap",
+            src: 'url("/fonts/CodeSaver-Regular.otf") format("opentype")',
+          },
         },
-      },
-      {
-        '@font-face': {
-          fontFamily: 'peachykeen',
-          fontWeight: '400',
-          fontStyle: 'normal',
-          fontNamedInstance: 'Regular',
-          fontDisplay: 'swap',
-          src: 'url("/fonts/PeachyKeen.otf") format("opentype")',
+        {
+          "@font-face": {
+            fontFamily: "peachykeen",
+            fontWeight: "400",
+            fontStyle: "normal",
+            fontNamedInstance: "Regular",
+            fontDisplay: "swap",
+            src: 'url("/fonts/PeachyKeen.otf") format("opentype")',
+          },
         },
-      },
-      {
-        '@font-face': {
-          fontFamily: 'Inter var',
-          fontWeight: '100 900',
-          fontStyle: 'normal',
-          fontNamedInstance: 'Regular',
-          fontDisplay: 'swap',
-          src: 'url("/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
+        {
+          "@font-face": {
+            fontFamily: "Inter var",
+            fontWeight: "100 900",
+            fontStyle: "normal",
+            fontNamedInstance: "Regular",
+            fontDisplay: "swap",
+            src:
+              'url("/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
+          },
         },
-      },
-      {
-        '@font-face': {
-          fontFamily: 'Inter var',
-          fontWeight: '100 900',
-          fontStyle: 'italic',
-          fontNamedInstance: 'Italic',
-          fontDisplay: 'swap',
-          src: 'url("/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
+        {
+          "@font-face": {
+            fontFamily: "Inter var",
+            fontWeight: "100 900",
+            fontStyle: "italic",
+            fontNamedInstance: "Italic",
+            fontDisplay: "swap",
+            src:
+              'url("/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
+          },
         },
-      },
-    ])
-  },]
+      ]);
+    },
+    require("@tailwindcss/ui"),
+    require("@tailwindcss/typography"),
+  ],
+  variants: {
+    padding: ["responsive", "hover", "focus"],
+    margin: ["responsive", "hover", "focus"],
+  },
 };

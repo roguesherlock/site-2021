@@ -20,14 +20,14 @@ export default function Subscribe() {
             id="bd-email"
             type="email"
             name="email"
-            className="p-2 border outline-none focus:shadow-outline rounded bg-primary placeholder-secondary"
+            className="p-2 border outline-none focus:shadow-outline rounded bg-secondary placeholder-primary placeholder-opacity-25"
             placeholder="Enter your email"
           />
           <input type="hidden" value="1" name="embed" />
         </div>
         <div>
           <button
-            className="px-4 py-2 border leading-6 font-medium rounded-md hover:bg-secondary hover:text-primary focus:outline-none focus:shadow-outline active:bg-secondary active:text-primary transition ease-in-out duration-150"
+            className="px-4 py-2 border leading-6 font-medium rounded-md hover:bg-primary hover:text-secondary focus:outline-none focus:shadow-outline active:bg-primary active:text-secondary transition-all ease-in-out duration-500 transform active:-translate-y-1"
             type="submit"
           >
             Subscribe

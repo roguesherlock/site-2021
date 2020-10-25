@@ -11,11 +11,11 @@ export default function useTheme() {
   const setCurrentTheme = useCallback(
     (theme: themeType = "light") => {
       const root = document.documentElement;
-      let primary = lightColor;
-      let secondary = darkColor;
+      let primary = darkColor;
+      let secondary = lightColor;
       if (theme === "dark") {
-        primary = darkColor;
-        secondary = lightColor;
+        primary = lightColor;
+        secondary = darkColor;
       }
       root.style.setProperty("--color-primary", primary);
       root.style.setProperty("--color-secondary", secondary);

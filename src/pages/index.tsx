@@ -1,10 +1,11 @@
-import React from "react";
-import Link from "next/link";
-import ArrowDown from "../components/ArrowDown";
-import Subscribe from "../components/Subscribe";
-import TypingAnimation from "../components/TypingAnimation";
+import React, { useState } from "react";
+import Link from "@/components/Link";
+import ArrowDown from "@/components/ArrowDown";
+import Subscribe from "@/components/Subscribe";
+import TypingAnimation from "@/components/TypingAnimation";
 
 export default function HomePage() {
+  const [height, setHeight] = useState("100vh");
   const words = [
     "Digital Product Designer",
     "Front End Developer",
@@ -16,10 +17,16 @@ export default function HomePage() {
     "Problem Solver",
     "Experimentalist",
   ];
+  React.useEffect(() => {
+    setHeight(`${window.document.body.clientHeight}`);
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center space-y-3">
-      <div className="flex flex-col items-center justify-center min-h-screen flex-shrink-0 flex-1 bg-red-500">
+      <div
+        style={{ minHeight: height }}
+        className="flex flex-col items-center justify-center flex-shrink-0 flex-1 bg-red-500"
+      >
         <h1 className="mt-auto text-4xl text-center font-semibold tracking-wide ">
           Hey There 👋
         </h1>
@@ -32,7 +39,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center min-h-screen ">
-        <h1 className="mt-12 max-w-3xl px-2 sm:px-0 text-lg sm:text-xl text-justify leading-loose font-medium tracking-wide ">
+        <h1 className="mt-12 max-w-3xl px-8 sm:px-0 text-lg sm:text-xl text-justify leading-loose font-medium tracking-wide ">
           Now this is the part where I give you a brief overview about me and
           then you judge me based on how it made you feel in the moment and also
           based on what is going in your life right now (like whether you had
@@ -43,7 +50,7 @@ export default function HomePage() {
         <h1 className="mt-10 font-display text-3xl sm:text-4xl text-center tracking-wide">
           Me in 10 Seconds?
         </h1>
-        <p className="font-medium tracking-wider leading-loose text-justify max-w-md px-2 sm:px-0">
+        <p className="font-medium tracking-wider leading-loose text-justify max-w-md px-8 sm:px-0">
           I’m a software developer turned life hacker and experimentalist. I am
           fascinated by human behaviour biology, philosophy, science, technology
           and startups. I love to think deeply about topics and write!
@@ -52,34 +59,19 @@ export default function HomePage() {
           Me in 10 Minutes?
         </h1>
         <p className="font-medium">
-          See{" "}
-          <Link href="/about">
-            <a className="border-b-2 font-semibold tracking-wide leading-loose text-lg hover:bg-secondary hover:text-primary transition ease-in-out duration-150">
-              my "about" page
-            </a>
-          </Link>
+          See <Link href="/about" label='my "about" page' />
         </p>
         <h1 className="mt-10 font-display text-3xl sm:text-4xl text-center tracking-wide">
           What am I doing now?
         </h1>
         <p className="font-medium">
-          See{" "}
-          <Link href="/now">
-            <a className="border-b-2 font-semibold tracking-wide leading-loose text-lg hover:bg-secondary hover:text-primary transition ease-in-out duration-150">
-              my "now" page
-            </a>
-          </Link>
+          See <Link href="/now" label='my "now" page' />
         </p>
         <h1 className="mt-10 font-display text-3xl sm:text-4xl text-center tracking-wide">
           Contact Me?
         </h1>
         <p className="font-medium">
-          See{" "}
-          <Link href="/contact">
-            <a className="border-b-2 font-semibold tracking-wide leading-loose text-lg hover:bg-secondary hover:text-primary transition ease-in-out duration-150">
-              why you should
-            </a>
-          </Link>
+          See <Link href="/contact" label="why you should" />
         </p>
         <div className="mt-10">
           <ArrowDown />
@@ -90,4 +82,15 @@ export default function HomePage() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const configData = await import("../../siteconfig");
+
+  return {
+    props: {
+      title: configData.default.title,
+      description: configData.default.description,
+    },
+  };
 }

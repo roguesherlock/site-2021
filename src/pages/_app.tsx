@@ -1,13 +1,13 @@
 import React from "react";
-import "../css/tailwind.css";
+import "@/css/tailwind.css";
 import Head from "next/head";
 import { AppProps } from "next/app";
-import SectionContainer from "../components/SectionContainer";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
+import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <div className="min-h-screen">
       <Head>
         <link
           rel="apple-touch-icon"
@@ -85,14 +85,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <title>Akashs musings</title>
       </Head>
-      <SectionContainer>
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </SectionContainer>
-      <SectionContainer>
-        <Footer />
-      </SectionContainer>
+      <main>
+        <Component {...pageProps} />
+      </main>
+      <Footer />
     </div>
   );
 }
