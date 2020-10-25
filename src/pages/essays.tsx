@@ -11,11 +11,17 @@ export type EssayType = {
 
 const degrees = [-2, 2];
 let index = 0;
-const rotateClass = () => {
+// const rotateClass = () => {
+//   const degree = degrees[index % degrees.length];
+//   const rotateDegree = degree < 0 ? `-rotate-${-degree}` : `rotate-${degree}`;
+//   index += 1;
+//   return ` transform ${rotateDegree}`;
+// };
+
+const getDegree = () => {
   const degree = degrees[index % degrees.length];
-  const rotateDegree = degree < 0 ? `-rotate-${-degree}` : `rotate-${degree}`;
   index += 1;
-  return ` transform ${rotateDegree}`;
+  return degree;
 };
 
 export default function Essays() {
@@ -23,6 +29,7 @@ export default function Essays() {
     <Layout title="Essays" pageTitle="Essays">
       <div className="space-y-12 flex flex-col leading-tight z-10 pb-24">
         {essays.map(({ link, module: { meta } }: EssayType) => {
+          const degree = getDegree();
           return (
             <div
               key={link}
@@ -31,8 +38,8 @@ export default function Essays() {
               <Link href={link}>
                 <a
                   className={
-                    "inline-block bg-primary p-5 text-secondary w-auto shadow-xl hover:-translate-y-1 hover:bg-hot-pink transition-all duration-200 ease-in-out" +
-                    rotateClass()
+                    "inline-block bg-primary p-5 text-secondary w-auto shadow-xl hover:-translate-y-1 hover:bg-hot-pink transition-all duration-200 ease-in-out transform " +
+                    `${degree < 0 ? "-rotate-2" : `rotate-2`}`
                   }
                 >
                   {meta.title}
