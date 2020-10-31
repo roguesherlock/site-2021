@@ -18,7 +18,7 @@ export default function HomePage() {
     "Experimentalist",
   ];
   React.useEffect(() => {
-    setHeight(`${window.document.body.clientHeight}`);
+    setHeight(`${window.innerHeight}`);
   }, []);
 
   return (
