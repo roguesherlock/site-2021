@@ -3,7 +3,7 @@ module.exports = {
   description: "Learning life one essay at a time!",
   author: "Akash",
   siteUrl: "https://roguesherlock.com",
-  siteImage: "apple-icon.png",
+  feedUrl: "https://roguesherlock.com/feed.xml",
   socialLinks: {
     twitter: "https://github.com/roguesherlock",
     github: "https://twitter.com/roguesherlock",
