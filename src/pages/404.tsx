@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import Link from "@/components/Link";
 import Image from "@/components/Image";
 
 export default function Custom404() {
