@@ -15,7 +15,6 @@ export type SEOProps = {
 export default function SEO({ meta }: PropsWithChildren<SEOProps>) {
   const router = useRouter();
   const title = `${meta.title} — ${config.title}`;
-  const image = `${config.siteUrl}/${meta.image ?? config.siteImage}`;
   return (
     <Head>
       <meta name="twitter:card" content="summary_large_image" />
@@ -23,7 +22,12 @@ export default function SEO({ meta }: PropsWithChildren<SEOProps>) {
       <meta name="twitter:creator" content={config.username} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={meta.spoiler} />
-      <meta name="twitter:image" content={image} />
+      {meta.image && (
+        <meta
+          name="twitter:image"
+          content={`${config.siteUrl}/${meta.image}`}
+        />
+      )}
       <meta
         property="og:url"
         content={`${config.siteUrl}/${router.pathname}`}
@@ -31,7 +35,9 @@ export default function SEO({ meta }: PropsWithChildren<SEOProps>) {
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={meta.spoiler} />
-      <meta property="og:image" content={image} />
+      {meta.image && (
+        <meta property="og:image" content={`${config.siteUrl}/${meta.image}`} />
+      )}
     </Head>
   );
 }
