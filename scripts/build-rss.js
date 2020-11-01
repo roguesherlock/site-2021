@@ -7,6 +7,9 @@ const feed = new RSS({
   title: config.title,
   site_url: config.siteUrl,
   feed_url: config.feedUrl,
+  description: config.description,
+  webMaster: config.author,
+  managingEditor: config.author,
 });
 
 getAllEssayPreviews().forEach(({ link, module: { meta } }) => {
@@ -15,8 +18,8 @@ getAllEssayPreviews().forEach(({ link, module: { meta } }) => {
     guid: link,
     url: `${config.siteUrl}/${link}`,
     date: meta.date,
-    description: meta.description,
-    custom_elements: [{ author: config.author }],
+    description: meta.spoiler,
+    author: config.author,
   });
 });
 
