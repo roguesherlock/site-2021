@@ -34,7 +34,7 @@ export default function HomePage() {
           I'm Akash
         </p>
         <TypingAnimation words={words} />
-        <div className="mt-auto">
+        <div className="mt-auto mb-4 sm:mb-0">
           <ArrowDown />
         </div>
       </div>
