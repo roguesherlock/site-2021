@@ -1,9 +1,8 @@
 import tinytime from "tinytime";
 import { useRouter } from "next/router";
-
 import Layout from "@/components/Layout";
 import Link from "@/components/Link";
-import config from "../../siteconfig.js";
+import SEO from "@/components/SEO";
 
 export type EssayPropsType = {
   meta: {
@@ -29,6 +28,7 @@ export default function Essay({
   return (
     <Layout pageTitle={meta.title}>
       <article className="xl:divide-y xl:divide-gray-200 min-h-screen">
+        <SEO meta={meta} />
         <header className="pt-12 xl:pt-16 xl:pb-10">
           <div className="space-y-1 text-center">
             <dl className="space-y-10">
@@ -42,11 +42,11 @@ export default function Essay({
               </div>
             </dl>
             <div className="text-5xl font-display">{meta.title}</div>
-            {meta.spoiler && (
+            {/* {meta.spoiler && (
               <div className="text-sm tracking-wide leading-loose">
                 {meta.spoiler}
               </div>
-            )}
+            )} */}
           </div>
         </header>
         <div className="divide-y xl:divide-y-0 divide-gray-200 flex flex-col space-y-10 pb-16 xl:pb-20">
