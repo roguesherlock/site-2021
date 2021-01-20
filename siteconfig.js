@@ -5,8 +5,8 @@ module.exports = {
   siteUrl: "https://roguesherlock.com",
   feedUrl: "https://roguesherlock.com/feed.xml",
   socialLinks: {
-    twitter: "https://github.com/roguesherlock",
-    github: "https://twitter.com/roguesherlock",
+    github: "https://github.com/roguesherlock",
+    twitter: "https://twitter.com/roguesherlock",
     instagram: "https://www.instagram.com/roguesherlock/",
   },
   username: "@roguesherlock",
