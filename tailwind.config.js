@@ -1,203 +1,303 @@
-// tailwind.config.js
-const defaultTheme = require("tailwindcss/defaultTheme");
-const mdx = require("@mdx-js/mdx");
-
-const typographyConfig = require("./tailwind.typography.config");
-const typography = typographyConfig.typography;
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: {
-    mode: "all",
-    content: ["./src/**/*.{ts,tsx,mdx}", "./next.config.js"],
-    options: {
-      extractors: [
-        {
-          extensions: ["mdx"],
-          extractor: (content) => {
-            content = mdx.sync(content);
-
-            // Capture as liberally as possible, including things like `h-(screen-1.5)`
-            const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
-
-            // Capture classes within other delimiters like .block(class="w-1/2") in Pug
-            const innerMatches =
-              content.match(/[^<>"'`\s.(){}[\]#=%]*[^<>"'`\s.(){}[\]#=%:]/g) ||
-              [];
-
-            return broadMatches.concat(innerMatches);
-          },
-        },
-      ],
-    },
-  },
-  important: true,
+  content: ['./src/**/*.{js,jsx}'],
+  darkMode: 'class',
+  plugins: [require('@tailwindcss/typography')],
   theme: {
-    colors: {
-      // new every project
-      // but there's always a
-      // place for hot pink
-      "hot-pink": "#fd2d78",
-      primary: "var(--color-primary)",
-      secondary: "var(--color-secondary)",
-      "deep-sapphire": "#081d6a",
-      "bright-turquoise": "#3ef4e8",
+    fontSize: {
+      xs: ['0.8125rem', { lineHeight: '1.5rem' }],
+      sm: ['0.875rem', { lineHeight: '1.5rem' }],
+      base: ['1rem', { lineHeight: '1.75rem' }],
+      lg: ['1.125rem', { lineHeight: '1.75rem' }],
+      xl: ['1.25rem', { lineHeight: '2rem' }],
+      '2xl': ['1.5rem', { lineHeight: '2rem' }],
+      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+      '4xl': ['2rem', { lineHeight: '2.5rem' }],
+      '5xl': ['3rem', { lineHeight: '3.5rem' }],
+      '6xl': ['3.75rem', { lineHeight: '1' }],
+      '7xl': ['4.5rem', { lineHeight: '1' }],
+      '8xl': ['6rem', { lineHeight: '1' }],
+      '9xl': ['8rem', { lineHeight: '1' }],
     },
-    fontFamily: {
-      sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-      display: ["peachykeen", "Inter var", ...defaultTheme.fontFamily.sans],
-      code: ["codesaver", ...defaultTheme.fontFamily.mono],
-    },
-    rotate: {
-      "-180": "-180deg",
-      "-90": "-90deg",
-      "-45": "-45deg",
-      "-10": "-10deg",
-      "-9": "-9deg",
-      "-8": "-8deg",
-      "-7": "-7deg",
-      "-6": "-6deg",
-      "-5": "-5deg",
-      "-4": "-4deg",
-      "-3": "-3deg",
-      "-2": "-2deg",
-      "-1": "-1deg",
-      0: "0",
-      1: "1deg",
-      2: "2deg",
-      3: "3deg",
-      4: "4deg",
-      5: "5deg",
-      6: "6deg",
-      7: "7deg",
-      8: "8deg",
-      9: "9deg",
-      10: "10deg",
-      45: "45deg",
-      90: "90deg",
-      180: "180deg",
-    },
-    spacing: {
-      px: "1px",
-      0: "0",
-      1: "0.25rem",
-      2: "0.5rem",
-      3: "0.75rem",
-      4: "1rem",
-      5: "1.25rem",
-      6: "1.5rem",
-      7: "1.75rem",
-      8: "2rem",
-      9: "2.25rem",
-      10: "2.5rem",
-      12: "3rem",
-      14: "3.5rem",
-      16: "4rem",
-      20: "5rem",
-      22: "5.5rem",
-      24: "6rem",
-      26: "6.5rem",
-      28: "7rem",
-      30: "7.5rem",
-      32: "8rem",
-      34: "8.5rem",
-      36: "9rem",
-      38: "9.5rem",
-      40: "10rem",
-      44: "11rem",
-      48: "12rem",
-      52: "13rem",
-      56: "14rem",
-      60: "15rem",
-      64: "16rem",
-      68: "17rem",
-      72: "18rem",
-      76: "19rem",
-      80: "20rem",
-      88: "22rem",
-      96: "24rem",
-      104: "26rem",
-      110: "28rem",
-      118: "30rem",
-      126: "32rem",
-      132: "34rem",
-      140: "36rem",
-    },
-    extend: {
-      colors: {
-        code: {
-          green: "#b5f4a5",
-          yellow: "#ffe484",
-          purple: "#d9a9ff",
-          red: "#ff8383",
-          blue: "#93ddfd",
-          white: "#fff",
+    typography: (theme) => ({
+      invert: {
+        css: {
+          '--tw-prose-body': 'var(--tw-prose-invert-body)',
+          '--tw-prose-headings': 'var(--tw-prose-invert-headings)',
+          '--tw-prose-links': 'var(--tw-prose-invert-links)',
+          '--tw-prose-links-hover': 'var(--tw-prose-invert-links-hover)',
+          '--tw-prose-underline': 'var(--tw-prose-invert-underline)',
+          '--tw-prose-underline-hover':
+            'var(--tw-prose-invert-underline-hover)',
+          '--tw-prose-bold': 'var(--tw-prose-invert-bold)',
+          '--tw-prose-counters': 'var(--tw-prose-invert-counters)',
+          '--tw-prose-bullets': 'var(--tw-prose-invert-bullets)',
+          '--tw-prose-hr': 'var(--tw-prose-invert-hr)',
+          '--tw-prose-quote-borders': 'var(--tw-prose-invert-quote-borders)',
+          '--tw-prose-captions': 'var(--tw-prose-invert-captions)',
+          '--tw-prose-code': 'var(--tw-prose-invert-code)',
+          '--tw-prose-code-bg': 'var(--tw-prose-invert-code-bg)',
+          '--tw-prose-pre-code': 'var(--tw-prose-invert-pre-code)',
+          '--tw-prose-pre-bg': 'var(--tw-prose-invert-pre-bg)',
+          '--tw-prose-pre-border': 'var(--tw-prose-invert-pre-border)',
+          '--tw-prose-th-borders': 'var(--tw-prose-invert-th-borders)',
+          '--tw-prose-td-borders': 'var(--tw-prose-invert-td-borders)',
         },
       },
-      animation: {
-        blink: "blink 1s step-end infinite",
-      },
-      keyframes: {
-        blink: {
-          "0%": { opacity: "0" },
-          "50%": { opacity: "0.5" },
+      DEFAULT: {
+        css: {
+          '--tw-prose-body': theme('colors.zinc.600'),
+          '--tw-prose-headings': theme('colors.zinc.900'),
+          '--tw-prose-links': theme('colors.teal.500'),
+          '--tw-prose-links-hover': theme('colors.teal.600'),
+          '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
+          '--tw-prose-underline-hover': theme('colors.teal.500'),
+          '--tw-prose-bold': theme('colors.zinc.900'),
+          '--tw-prose-counters': theme('colors.zinc.900'),
+          '--tw-prose-bullets': theme('colors.zinc.900'),
+          '--tw-prose-hr': theme('colors.zinc.100'),
+          '--tw-prose-quote-borders': theme('colors.zinc.200'),
+          '--tw-prose-captions': theme('colors.zinc.400'),
+          '--tw-prose-code': theme('colors.zinc.700'),
+          '--tw-prose-code-bg': theme('colors.zinc.300 / 0.2'),
+          '--tw-prose-pre-code': theme('colors.zinc.100'),
+          '--tw-prose-pre-bg': theme('colors.zinc.900'),
+          '--tw-prose-pre-border': 'transparent',
+          '--tw-prose-th-borders': theme('colors.zinc.200'),
+          '--tw-prose-td-borders': theme('colors.zinc.100'),
+
+          '--tw-prose-invert-body': theme('colors.zinc.400'),
+          '--tw-prose-invert-headings': theme('colors.zinc.200'),
+          '--tw-prose-invert-links': theme('colors.teal.400'),
+          '--tw-prose-invert-links-hover': theme('colors.teal.400'),
+          '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
+          '--tw-prose-invert-underline-hover': theme('colors.teal.400'),
+          '--tw-prose-invert-bold': theme('colors.zinc.200'),
+          '--tw-prose-invert-counters': theme('colors.zinc.200'),
+          '--tw-prose-invert-bullets': theme('colors.zinc.200'),
+          '--tw-prose-invert-hr': theme('colors.zinc.700 / 0.4'),
+          '--tw-prose-invert-quote-borders': theme('colors.zinc.500'),
+          '--tw-prose-invert-captions': theme('colors.zinc.500'),
+          '--tw-prose-invert-code': theme('colors.zinc.300'),
+          '--tw-prose-invert-code-bg': theme('colors.zinc.200 / 0.05'),
+          '--tw-prose-invert-pre-code': theme('colors.zinc.100'),
+          '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 0.4)',
+          '--tw-prose-invert-pre-border': theme('colors.zinc.200 / 0.1'),
+          '--tw-prose-invert-th-borders': theme('colors.zinc.700'),
+          '--tw-prose-invert-td-borders': theme('colors.zinc.800'),
+
+          // Base
+          color: 'var(--tw-prose-body)',
+          lineHeight: theme('lineHeight.7'),
+          '> *': {
+            marginTop: theme('spacing.10'),
+            marginBottom: theme('spacing.10'),
+          },
+          p: {
+            marginTop: theme('spacing.7'),
+            marginBottom: theme('spacing.7'),
+          },
+
+          // Headings
+          'h2, h3': {
+            color: 'var(--tw-prose-headings)',
+            fontWeight: theme('fontWeight.semibold'),
+          },
+          h2: {
+            fontSize: theme('fontSize.xl')[0],
+            lineHeight: theme('lineHeight.7'),
+            marginTop: theme('spacing.20'),
+            marginBottom: theme('spacing.4'),
+          },
+          h3: {
+            fontSize: theme('fontSize.base')[0],
+            lineHeight: theme('lineHeight.7'),
+            marginTop: theme('spacing.16'),
+            marginBottom: theme('spacing.4'),
+          },
+          ':is(h2, h3) + *': {
+            marginTop: 0,
+          },
+
+          // Images
+          img: {
+            borderRadius: theme('borderRadius.3xl'),
+          },
+
+          // Inline elements
+          a: {
+            color: 'var(--tw-prose-links)',
+            fontWeight: theme('fontWeight.semibold'),
+            textDecoration: 'underline',
+            textDecorationColor: 'var(--tw-prose-underline)',
+            transitionProperty: 'color, text-decoration-color',
+            transitionDuration: theme('transitionDuration.150'),
+            transitionTimingFunction: theme('transitionTimingFunction.in-out'),
+          },
+          'a:hover': {
+            color: 'var(--tw-prose-links-hover)',
+            textDecorationColor: 'var(--tw-prose-underline-hover)',
+          },
+          strong: {
+            color: 'var(--tw-prose-bold)',
+            fontWeight: theme('fontWeight.semibold'),
+          },
+          code: {
+            display: 'inline-block',
+            color: 'var(--tw-prose-code)',
+            fontSize: theme('fontSize.sm')[0],
+            fontWeight: theme('fontWeight.semibold'),
+            backgroundColor: 'var(--tw-prose-code-bg)',
+            borderRadius: theme('borderRadius.lg'),
+            paddingLeft: theme('spacing.1'),
+            paddingRight: theme('spacing.1'),
+          },
+          'a code': {
+            color: 'inherit',
+          },
+          ':is(h2, h3) code': {
+            fontWeight: theme('fontWeight.bold'),
+          },
+
+          // Quotes
+          blockquote: {
+            paddingLeft: theme('spacing.6'),
+            borderLeftWidth: theme('borderWidth.2'),
+            borderLeftColor: 'var(--tw-prose-quote-borders)',
+            fontStyle: 'italic',
+          },
+
+          // Figures
+          figcaption: {
+            color: 'var(--tw-prose-captions)',
+            fontSize: theme('fontSize.sm')[0],
+            lineHeight: theme('lineHeight.6'),
+            marginTop: theme('spacing.3'),
+          },
+          'figcaption > p': {
+            margin: 0,
+          },
+
+          // Lists
+          ul: {
+            listStyleType: 'disc',
+          },
+          ol: {
+            listStyleType: 'decimal',
+          },
+          'ul, ol': {
+            paddingLeft: theme('spacing.6'),
+          },
+          li: {
+            marginTop: theme('spacing.6'),
+            marginBottom: theme('spacing.6'),
+            paddingLeft: theme('spacing[3.5]'),
+          },
+          'li::marker': {
+            fontSize: theme('fontSize.sm')[0],
+            fontWeight: theme('fontWeight.semibold'),
+          },
+          'ol > li::marker': {
+            color: 'var(--tw-prose-counters)',
+          },
+          'ul > li::marker': {
+            color: 'var(--tw-prose-bullets)',
+          },
+          'li :is(ol, ul)': {
+            marginTop: theme('spacing.4'),
+            marginBottom: theme('spacing.4'),
+          },
+          'li :is(li, p)': {
+            marginTop: theme('spacing.3'),
+            marginBottom: theme('spacing.3'),
+          },
+
+          // Code blocks
+          pre: {
+            color: 'var(--tw-prose-pre-code)',
+            fontSize: theme('fontSize.sm')[0],
+            fontWeight: theme('fontWeight.medium'),
+            backgroundColor: 'var(--tw-prose-pre-bg)',
+            borderRadius: theme('borderRadius.3xl'),
+            padding: theme('spacing.8'),
+            overflowX: 'auto',
+            border: '1px solid',
+            borderColor: 'var(--tw-prose-pre-border)',
+          },
+          'pre code': {
+            display: 'inline',
+            color: 'inherit',
+            fontSize: 'inherit',
+            fontWeight: 'inherit',
+            backgroundColor: 'transparent',
+            borderRadius: 0,
+            padding: 0,
+          },
+
+          // Horizontal rules
+          hr: {
+            marginTop: theme('spacing.20'),
+            marginBottom: theme('spacing.20'),
+            borderTopWidth: '1px',
+            borderColor: 'var(--tw-prose-hr)',
+            '@screen lg': {
+              marginLeft: `calc(${theme('spacing.12')} * -1)`,
+              marginRight: `calc(${theme('spacing.12')} * -1)`,
+            },
+          },
+
+          // Tables
+          table: {
+            width: '100%',
+            tableLayout: 'auto',
+            textAlign: 'left',
+            fontSize: theme('fontSize.sm')[0],
+          },
+          thead: {
+            borderBottomWidth: '1px',
+            borderBottomColor: 'var(--tw-prose-th-borders)',
+          },
+          'thead th': {
+            color: 'var(--tw-prose-headings)',
+            fontWeight: theme('fontWeight.semibold'),
+            verticalAlign: 'bottom',
+            paddingBottom: theme('spacing.2'),
+          },
+          'thead th:not(:first-child)': {
+            paddingLeft: theme('spacing.2'),
+          },
+          'thead th:not(:last-child)': {
+            paddingRight: theme('spacing.2'),
+          },
+          'tbody tr': {
+            borderBottomWidth: '1px',
+            borderBottomColor: 'var(--tw-prose-td-borders)',
+          },
+          'tbody tr:last-child': {
+            borderBottomWidth: 0,
+          },
+          'tbody td': {
+            verticalAlign: 'baseline',
+          },
+          tfoot: {
+            borderTopWidth: '1px',
+            borderTopColor: 'var(--tw-prose-th-borders)',
+          },
+          'tfoot td': {
+            verticalAlign: 'top',
+          },
+          ':is(tbody, tfoot) td': {
+            paddingTop: theme('spacing.2'),
+            paddingBottom: theme('spacing.2'),
+          },
+          ':is(tbody, tfoot) td:not(:first-child)': {
+            paddingLeft: theme('spacing.2'),
+          },
+          ':is(tbody, tfoot) td:not(:last-child)': {
+            paddingRight: theme('spacing.2'),
+          },
         },
       },
-    },
-    typography,
+    }),
   },
-  future: { removeDeprecatedGapUtilities: true },
-  plugins: [
-    function ({ addBase }) {
-      addBase([
-        {
-          "@font-face": {
-            fontFamily: "codesaver",
-            fontWeight: "400",
-            fontStyle: "normal",
-            fontNamedInstance: "Regular",
-            fontDisplay: "swap",
-            src: 'url("/fonts/CodeSaver-Regular.otf") format("opentype")',
-          },
-        },
-        {
-          "@font-face": {
-            fontFamily: "peachykeen",
-            fontWeight: "400",
-            fontStyle: "normal",
-            fontNamedInstance: "Regular",
-            fontDisplay: "swap",
-            src: 'url("/fonts/PeachyKeen.otf") format("opentype")',
-          },
-        },
-        {
-          "@font-face": {
-            fontFamily: "Inter var",
-            fontWeight: "100 900",
-            fontStyle: "normal",
-            fontNamedInstance: "Regular",
-            fontDisplay: "swap",
-            src:
-              'url("/fonts/Inter-roman.var-latin.woff2?3.13") format("woff2")',
-          },
-        },
-        {
-          "@font-face": {
-            fontFamily: "Inter var",
-            fontWeight: "100 900",
-            fontStyle: "italic",
-            fontNamedInstance: "Italic",
-            fontDisplay: "swap",
-            src:
-              'url("/fonts/Inter-italic.var-latin.woff2?3.13") format("woff2")',
-          },
-        },
-      ]);
-    },
-    require("@tailwindcss/ui"),
-    require("@tailwindcss/typography"),
-  ],
-  variants: {
-    padding: ["responsive", "hover", "focus"],
-    margin: ["responsive", "hover", "focus"],
-  },
-};
+}
